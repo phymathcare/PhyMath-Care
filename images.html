@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Images</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
+    body {
+      background-color: #0e0e0e;
+      color: white;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #b74b4b;
+      text-shadow: 0 0 15px rgba(183, 75, 75, 0.7);
+      margin-bottom: 0.5rem;
+    }
+
+    header h3 {
+      font-size: 1.4rem;
+      color: #aaa;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      letter-spacing: 1px;
+    }
+
+    .gallery-box {
+      max-width: 1200px;
+      margin: auto;
+      background-color: #151515;
+      border-radius: 16px;
+      border: 2px solid #b74b4b;
+      padding: 2rem;
+      box-shadow: 0 0 30px rgba(183, 75, 75, 0.4);
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .image-card {
+      width: 220px;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #1a1a1a, #222);
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(183, 75, 75, 0.3);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(183, 75, 75, 0.6);
+      border-color: #b74b4b;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Fullscreen modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px #b74b4b;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #b74b4b;
+      color: black;
+      border: none;
+      padding: 8px 14px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #b74b4b;
+      transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #a33d3d;
+      box-shadow: 0 0 25px #b74b4b;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      border-top: 1px solid #b74b4b;
+      padding-top: 1rem;
+    }
+
+    footer span {
+      color: #b74b4b;
+    }
+
+    @media (max-width: 768px) {
+      .image-card {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .back-button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ɪᴍᴀɢᴇs</h1>
+    <h3>Motivational Images</h3>
+  </header>
+
+  <section class="gallery-box">
+    <div class="gallery">
+      <div class="image-card" onclick="zoomImage('images/image1.jpg')">
+        <img src="images/image1.jpg" alt="Image 1">
+      </div>
+      <div class="image-card" onclick="zoomImage('images/image2.jpg')">
+        <img src="images/image2.jpg" alt="Image 2">
+      </div>
+      <div class="image-card" onclick="zoomImage('images/image3.jpg')">
+        <img src="images/image3.jpg" alt="Image 3">
+      </div>
+      <div class="image-card" onclick="zoomImage('images/image4.jpg')">
+        <img src="images/image4.jpg" alt="Image 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="imgModal">
+    <button class="back-button" onclick="closeModal()">← Back</button>
+    <img id="modalImage" src="" alt="Zoomed Image">
+  </div>
+
+  <footer>
+    <p>Created by <span>ʀᴏʜᴀɴ</span> &copy; 2025.</p>
+  </footer>
+
+  <script>
+    function zoomImage(src) {
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = src;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('imgModal').classList.remove('active');
+    }
+
+    // Optional: Escape key to close modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+  </html>
