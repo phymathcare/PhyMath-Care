@@ -2,302 +2,382 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>phymath Care</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0ea5e9',
-            dark: '#0f172a', you 
-            neon: '#67e8f9',
-            skybg: '#e0f7ff'
-          },
-          boxShadow: {
-            glow: '0 0 25px #67e8f9',
-            footerglow: '0 0 15px #0ea5e9',
-          },
-        },
-      },
-    }
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>motivation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
-      background-color: #e0f7ff; /* আকাশি */
-      color: #0f172a; /* dark text */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .glow-box {
-      box-shadow: 0 0 25px #67e8f9;
-      border: 2px solid #67e8f9;
-      transition: all 0.3s ease-in-out;
-      border-radius: 1rem;
-      background: white;
-    }
-    .glow-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 40px #67e8f9;
-    }
-    .nav-link {
-      color: #0ea5e9;
-      font-weight: 600;
-      padding: 0.25rem 1rem;
-      border-radius: 0.375rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      display: inline-block;
-      text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .nav-link:hover {
-      background-color: #0ea5e9;
+      background-color: #0f0f0f;
       color: white;
     }
-    h3.section-title {
-      text-align: center;
-      color: #0ea5e9;
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 0 10px #67e8f9;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1.5rem;
+      background-color: #111;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
     }
-    .founder-pic {
-      border: 4px solid #0ea5e9;
-      box-shadow: 0 0 25px #67e8f9;
-      border-radius: 12px;
-      object-fit: cover;
-      height: 160px;
-      width: 160px;
-      margin-bottom: 1rem;
-      transition: all 0.3s ease-in-out;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      background: white;
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #b74b4b;
     }
-    .founder-pic:hover {
-      box-shadow: 0 0 40px #0ea5e9;
-      transform: scale(1.05);
+
+    .menu-icon {
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: white;
+      z-index: 1001;
     }
-    .bio-text {
-      font-style: italic;
-      color: #334155;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 0.25rem;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    .bio-container {
-      background: #ffffffcc;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px #67e8f9;
-      margin-bottom: 2rem;
-      max-width: 360px;
-      position: relative;
-      flex: 1;
-    }
-    .founder-bios {
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 50%;
+      height: 100vh;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(6px);
+      border-left: 2px solid #b74b4b;
+      box-shadow: -4px 0 15px rgba(183, 75, 75, 0.4);
       display: flex;
       flex-direction: column;
-      gap: 2rem;
       align-items: center;
       justify-content: center;
+      transition: right 0.4s ease-in-out;
+      z-index: 1000;
     }
-    @media(min-width: 768px) {
-      .founder-bios {
-        flex-direction: row;
+
+    nav.show {
+      right: 0;
+    }
+
+    nav a {
+      color: white;
+      font-size: 1.3rem;
+      margin: 1rem 0;
+      padding: 0.8rem 1.8rem;
+      background-color: #2b2b2b;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(183, 75, 75, 0.2);
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #b74b4b;
+      color: black;
+      transform: scale(1.08);
+      box-shadow: 0 0 18px #b74b4b;
+    }
+
+    .main {
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .quote-box {
+      margin: 2rem auto;
+      max-width: 600px;
+      padding: 2rem;
+      border-radius: 10px;
+      background-color: #1c1c1c;
+      box-shadow: 0 0 20px #b74b4b;
+      animation: glowBox 3s infinite alternate;
+    }
+
+    .quote-box h2 {
+      color: #b74b4b;
+      margin-bottom: 1rem;
+    }
+
+    .quote-box p {
+      font-size: 1.4rem;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: transparent;
+      border: 2px solid #b74b4b;
+      color: #b74b4b;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.4s;
+      border-radius: 30px;
+    }
+
+    .btn:hover {
+      background-color: #b74b4b;
+      color: black;
+      box-shadow: 0 0 20px #b74b4b;
+      transform: scale(1.05);
+    }
+
+    @keyframes glowBox {
+      from {
+        box-shadow: 0 0 10px #b74b4b;
+      }
+      to {
+        box-shadow: 0 0 25px #b74b4b;
       }
     }
-    #mobileNav {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 1rem;
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px #67e8f9;
-      padding: 1rem 2rem;
-      z-index: 1000;
+
+    #about {
+      margin-top: 5rem;
+      padding: 3rem 2rem;
+      background-color: #121212;
       text-align: center;
-      min-width: 150px;
     }
-    #mobileNav a {
+
+    .about-box {
+      margin: auto;
+      padding: 2rem;
+      max-width: 600px;
+      background-color: #1d1d1d;
+      border-left: 5px solid #b74b4b;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+      transition: 0.3s;
+    }
+
+    .about-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(183, 75, 75, 0.8);
+    }
+
+    .about-box h2 {
+      color: #b74b4b;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== FOUNDER SECTION ===== */
+    #founder-section {
+      background-color: #131313;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    #founder-section h2 {
+      font-size: 2.2rem;
+      color: #b74b4b;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .founder-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .founder-box {
+      background-color: #1d1d1d;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 320px;
+      box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .founder-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 15px #b74b4b;
       display: block;
+    }
+
+    .founder-box h3 {
+      color: #b74b4b;
       margin: 0.5rem 0;
-      color: #0ea5e9;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      cursor: pointer;
     }
-    #mobileNav a:hover {
-      color: #0369a1;
+
+    .social-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
-    footer {
-      background-color: #0ea5e9;
+
+    .social-links a {
       color: white;
-      padding: 1.5rem 0;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #b74b4b;
+      transform: scale(1.2);
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    #contact {
+      padding: 3rem 2rem;
+      background-color: #121212;
       text-align: center;
-      font-weight: 600;
-      box-shadow: 0 0 15px #0ea5e9;
-      margin-top: 4rem;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
     }
-    /* header fixed spacing for smooth scroll offset */
-    section {
-      scroll-margin-top: 80px;
+
+    .contact-box {
+      margin: auto;
+      padding: 2rem;
+      max-width: 600px;
+      background-color: #1d1d1d;
+      border-left: 5px solid #b74b4b;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
     }
-    
- 
+
+    .contact-box h2 {
+      color: #b74b4b;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #0d0d0d;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #ccc;
+      border-top: 1px solid #b74b4b;
+    }
+
+    footer span {
+      color: #b74b4b;
+    }
+
+    @media (min-width: 768px) {
+      .founder-container {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        width: 80%;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="fixed top-0 w-full z-50 bg-[#e0f7ff] shadow-md py-4 px-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-primary cursor-default">PhyMath Care</h1>
-
-    <!-- Desktop Menu -->
-    <nav class="hidden md:flex space-x-6 text-lg font-semibold">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#motivation" class="nav-link">Motivation</a>
-      <a href="#founder" class="nav-link">Founder</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-
-    <!-- Mobile Hamburger -->
-    <div class="md:hidden relative">
-      <button id="menuBtn" class="text-3xl font-bold text-primary">☰</button>
-      <nav id="mobileNav" aria-label="Mobile navigation">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#motivation" class="nav-link">Motivation</a>
-        <a href="#founder" class="nav-link">Founder</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-    </div>
+  <header>
+    <div class="logo">❶ᴍ͢͢͢ᴏᴛɪᴠᴀᴛɪᴏɴ</div>
+    <i class="fas fa-bars menu-icon" id="menu-toggle"></i>
   </header>
 
-  <main class="pt-28 px-4 space-y-20 max-w-7xl mx-auto">
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="images.html">Image</a>
+    <a href="videos.html">Video</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <!-- Home -->
-    <section id="home" class="min-h-[60vh] flex flex-col items-center justify-center text-center space-y-6">
-      <h2 class="text-4xl font-bold text-primary">𝗡𝗘𝗩𝗘𝗥 𝗚𝗜𝗩𝗘 𝗨𝗣</h2>
-      <div class="glow-box p-8 rounded-2xl max-w-2xl text-center">
-        <p class="text-lg text-gray-700">𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗣𝗵𝘆𝗠𝗮𝘁𝗵 𝗖𝗮𝗿𝗲</p>
-      </div>
-    </section>
+  <section class="main" id="home">
+    <div class="quote-box">
+      <h2>"𝗡𝗘𝗩𝗘𝗥 𝗚𝗜𝗩𝗘 𝗨𝗣"</h2>
+      <p><H4><br>𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 ➊𝙼𝙾𝚃𝙸𝚅𝙰𝚃𝙸𝙾𝙽.</H4></p>
+    </div>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contact Me</button>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="min-h-screen flex items-center justify-center">
-      <div class="glow-box p-8 rounded-2xl max-w-3xl text-center">
-        <h3 class="section-title">𝗔𝗯𝗼𝘂𝘁 𝗨𝘀</h3>
-        <p class="text-gray-700 text-lg">"𝗪𝗲 𝗮𝗿𝗲 𝘁𝘄𝗼 𝗳𝗿𝗶𝗲𝗻𝗱𝘀 𝘄𝗵𝗼 𝗹𝗼𝘃𝗲 𝘁𝗼 𝗹𝗲𝗮𝗿𝗻 𝗼𝘂𝗿𝘀𝗲𝗹𝘃𝗲𝘀 𝗮𝗻𝗱 𝗹𝗼𝘃𝗲 𝘁𝗼 𝘁𝗲𝗮𝗰𝗵 𝗼𝘁𝗵𝗲𝗿𝘀! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗣𝗿𝗮𝘆 𝗙𝗼𝗿 𝗨𝘀💛"
-        </p>
-      </div>
-    </section>
+  <section id="about">
+    <div class="about-box">
+      <h2>About Us</h2>
+      <p>𝗪𝗲 𝗔𝗿𝗲 𝗧𝘄𝗼 𝗙𝗿𝗶𝗲𝗻𝗱𝘀 𝗪𝗵𝗼 𝗟𝗼𝘃𝗲 𝗧𝗼 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴 𝗢𝘂𝗿𝘀𝗲𝗹𝗲𝘃𝘀 𝗔𝗻𝗱 𝗟𝗼𝘃𝗲 𝗧𝗼 𝗧𝗲𝗰𝗵 𝗢𝘁𝗵𝗲𝗿𝘀 </p>
+    </div>
+  </section>
 
-    <!-- Motivation -->
-    <section id="motivation" class="min-h-screen flex flex-col items-center justify-center">
-      <div class="glow-box p-8 rounded-2xl w-full max-w-5xl">
-        <h3 class="section-title">Motivation</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Text Posts -->
-          <div class="bg-sky-100 p-6 rounded-lg shadow-inner space-y-6">
-            <h4 class="text-xl font-semibold text-primary text-center mb-4"></h4>
-            <div class="post text-gray-700 italic font-semibold">・Success is not final, failure is not fatal: It is the courage to continue that counts.</div>
-            <div class="post text-gray-700 italic font-semibold">・Push yourself, because no one else is going to do it for you.</div>
-          </div>
-          <!-- Image Posts -->
-          <div class="bg-sky-100 p-6 rounded-lg shadow-inner space-y-6">
-            <h4 class="text-xl font-semibold text-primary text-center mb-4"></h4>
-            <div class="post">
-              <img src="7e31beec37c28ced43f748949c37f514.jpg" alt="Motivation" class="rounded-lg shadow-lg mx-auto" />
-            </div>
-            <div class="post">
-              <img src="7918bd96afbb0f27d967a0b159230834.jpg" alt="Motivation" class="rounded-lg shadow-lg mx-auto" />
-            </div>
-          </div>
+  <section id="founder-section">
+    <h2>Founder</h2>
+    <div class="founder-container">
+      <div class="founder-box">
+        <img src="20250602_185652.png"  alt="Founder 1" class="founder-img">
+        <h3>Md Rohan Sheikh</h3>
+        <p>𝗛𝗦𝗖-𝟮𝟳</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-    </section>
-
-    <!-- Founder -->
-    <section id="founder" class="min-h-screen flex flex-col items-center justify-center space-y-10">
-      <div class="glow-box p-8 rounded-2xl max-w-5xl w-full">
-        <h3 class="section-title">Founder</h3>
-        <div class="founder-bios">
-          <!-- Friend 1 -->
-          <div class="bio-container">
-            <img src="shantopic.png" alt="Friend 1" class="founder-pic" />
-            <div class="bio-text">
-              <p><strong></strong>𝗦𝗵𝗮𝗿𝗶𝗮𝗿 𝗥𝗮𝗵𝗺𝗻 𝗦𝗵𝗮𝗻𝘁𝗼</p>
-              <p><strong></strong>𝗛𝗦𝗖-𝟮𝟳</p>
-              <p><strong></strong> 
-                <a href="https://facebook.com" target="https://www.facebook.com/share/1AKk5zgjaf/" class="text-primary hover:underline">Facebook</a> | 
-                <a href="https://instagram.com" target="https://www.instagram.com/shantonakii?igsh=MXMwNHFnaTk3dDRiMQ==" class="text-primary hover:underline">Instagram</a>
-              </p>
-            </div>
-          </div>
-          <!-- You -->
-          <div class="bio-container">
-            <img src="20250602_185652.png" alt="Rohan" class="founder-pic" />
-            <div class="bio-text">
-              <p><strong></strong>𝗠𝗱. 𝗥𝗼𝗵𝗮𝗻 𝗦𝗵𝗲𝗶𝗸𝗵</p>
-              <p><strong></strong>𝗛𝗦𝗖-𝟮𝟳</p>
-              <p><strong></strong> 
-                <a href="https://Facebook.com" target="https://www.facebook.com/share/1DyhYRfN2r/" class="text-primary hover:underline">Facebook</a> | 
-                <a href="https://Instagram.com" target="https://www.instagram.com/ewrrohanyoo?igsh=aWJ6cDVsbmd3aWhq" class="text-primary hover:underline">Instagram</a>
-              </p>
-            </div>
-          </div>
+      <div class="founder-box">
+        <img src="shantorpic.png" alt="Founder 2" class="founder-img">
+        <h3>Shariar  Rahman <br> </h3>
+        <p>𝗛𝗦𝗖-𝟮𝟳</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section class="min-h-screen flex items-center justify-center">
-  <div class="glow-box p-8 rounded-2xl max-w-3xl w-full text-center">
-    <h3 class="section-title">Contact</h3>
-    <p class="text-gray-700 text-lg mb-4">To contact us, please visit the dedicated contact page.</p>
-    <a href="Contact.html">Contact</a>
-    </a>
-  </div>
-</section>
-
-  </main>
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Contact</h2>
+      <p>𝗜𝗳 𝗬𝗼𝘂 𝗪𝗼𝘂𝗹𝗱 𝗟𝗶𝗸𝗲 𝗧𝗼 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗨𝘀 𝗕𝘆 𝗘𝗺𝗮𝗶𝗹, 𝗣𝗹𝗲𝗮𝘀𝗲 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗨𝘀 𝗔𝘁 𝗧𝗵𝗲 𝗘𝗺𝗮𝗶𝗹 𝗕𝗲𝗹𝗼𝘄 <br><br> nexaverse73@gmail.com<br> shariarrahman@gmail.com</p>
+    </div>
+  </section>
 
   <footer>
-    Founder:Rohan&shanto &nbsp;|&nbsp; &copy; Copyright 2025.
+    <p>Created by <span>Rohan</span> &copy; 2025.</p>
   </footer>
 
   <script>
-    // Mobile nav toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';
-      } else {
-        mobileNav.style.display = 'block';
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      nav.classList.toggle('show');
+      isMenuOpen = !isMenuOpen;
+    }
+
+    menuToggle.addEventListener('click', function (e) {
+      e.stopPropagation(); 
+      toggleMenu();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (isMenuOpen && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        toggleMenu();
       }
     });
 
-    // Close mobile nav on link click
-    document.querySelectorAll('#mobileNav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.style.display = 'none';
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          e.preventDefault();
+        }
+        if (isMenuOpen) {
+          toggleMenu();
+        }
       });
     });
   </script>
+
 </body>
-    </html>
+                                          </html>
